@@ -22,6 +22,9 @@ import RoomList from "./components/Dashboard/RoomList";
 import Reviews from "./components/Dashboard/Reviews";
 import Task from "./components/Dashboard/Task";
 
+import CreateSubAdmin from "./components/Dashboard/CreateSubAdmin";
+import CreateBuildingAdmins from "./components/Dashboard/CreateBuildingAdmins";
+
 /////Demo
 import Theme1 from "./components/Dashboard/Demo/Theme1";
 import Theme2 from "./components/Dashboard/Demo/Theme2";
@@ -115,6 +118,7 @@ import Error500 from "./pages/Error500";
 import Error503 from "./pages/Error503";
 import Setting from "./layouts/Setting";
 import { ThemeContext } from "../context/ThemeContext";
+import UserList from "./components/Dashboard/UserList";
 
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
@@ -129,6 +133,10 @@ const Markup = () => {
     { url: "room-list", component: RoomList },
     { url: "reviews", component: Reviews },
     { url: "task", component: Task },
+    { url: "createSubAdmin", component: CreateSubAdmin },
+    { url: "createBuildingAdmin", component: CreateBuildingAdmins },
+    { url: "userList", component: UserList },
+
 	
 	///Demo
     { url: "primary-sidebar", component: Theme1 },
