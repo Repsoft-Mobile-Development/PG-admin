@@ -1,0 +1,18 @@
+.concierge-list-bx{
+	img{
+		height:5.5rem;
+		width:5.5rem;
+		@include respond('phone'){
+			height:4.225rem;
+			width:4.225rem;
+		}
+	}	
+	
+}
+.job-desk{
+	width:23%;	
+}	
+.review-slider{
+	background:$white;	
+	box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgba(82,63,105,0.05);
+}
