@@ -23,6 +23,8 @@ const getUsers = (pagesize = 10, page = 1) => {
   )
     .then((response) => response.json())
     .then((json) => {
+      if (json.error) return window.alert(json.error);
+      
       users = json.users;
       currentPage = json.currentpage;
       totalPages = json.totalpages;

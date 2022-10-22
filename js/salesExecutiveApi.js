@@ -1,4 +1,8 @@
 let salesExecs = [];
+let currentPage = 1;
+let pageSize = 10;
+let totalPages;
+
 const salesExecsTableBody = document.getElementById("sales-exec-table-body");
 const salesExecutiveTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
@@ -19,11 +23,16 @@ const getSalesExecs = (pagesize = 10, page = 1) => {
     .then((response) => response.json())
     .then((json) => {
       if (json.error) return window.alert(json.error);
+
       salesExecs = json.users;
-      console.log(salesExecs);
-      salesExecutiveTableInfo.innerText = `Showing ${(json.currentpage - 1) * pagesize} to ${
-        pagesize > salesExecs.length ? salesExecs.length : pagesize
-      } of ${salesExecs.length} entries`;
+      currentPage = json.currentpage;
+      totalPages = json.totalpages;
+
+      salesExecutiveTableInfo.innerText = `Showing ${
+        (json.currentpage - 1) * pagesize + 1
+      } to ${
+        pagesize < pagesize * page + salesExecs.length ? pagesize * page : pagesize
+      } of ${json.totalpages * pagesize} entries`;
 
       for (let i = 0; i < salesExecs.length; i++) {
         const row = document.createElement("tr");
@@ -79,13 +88,41 @@ const getSalesExecs = (pagesize = 10, page = 1) => {
     });
 };
 
+const loadPaginationEventListeners = () => {
+  const paginationButtons = document.querySelectorAll(".paginate_button");
+  paginationButtons[0].addEventListener("click", () => {
+    console.log(currentPage, pageSize);
+    if (currentPage - 1 < 1) return;
+    salesExecsTableBody.innerHTML = "";
+    getSalesExecs(pageSize, currentPage - 1);
+    console.log("prev");
+  });
+
+  paginationButtons[1].addEventListener("click", () => {
+    console.log(currentPage, pageSize);
+    if (totalPages < currentPage + 1) return;
+    salesExecsTableBody.innerHTML = "";
+    getSalesExecs(pageSize, currentPage + 1);
+    console.log("next");
+  });
+};
+
 pageSizeSelector.addEventListener("change", () => {
-  console.log(pageSizeSelector.value);
-  getSalesExecs(pageSizeSelector.value);
+  pageSize = pageSizeSelector.value;
+  salesExecsTableBody
+    .querySelectorAll("tr")
+    .forEach((element) => salesExecsTableBody.removeChild(element));
+  totalPages = 1;
+  currentPage = 10;
+  getSalesExecs(pageSize);
+  loadPaginationEventListeners();
 });
 
 getSalesExecs();
+loadPaginationEventListeners();
 
+
+// post new sales exec
 const newSalesExecNameInput = document.getElementById(
   "new-sales-executive-name"
 );
