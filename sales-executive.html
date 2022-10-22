@@ -694,7 +694,7 @@
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="header-left">
                             <div class="dashboard_bar">
-                                Sub Admin-Datatable
+                                Sales Executives Datatable
                             </div>
                         </div>
 
@@ -896,7 +896,7 @@
 							<li><a href="room-list.html">Room List</a></li>
 							<li><a href="reviews.html">Reviews</a></li>	
 						</ul>-->
-                        <li><a href="datatable.html">Create Sales Executives</a></li>
+                        <li><a href="sales-executive.html">Create Sales Executives</a></li>
                         
                         <li><a href="pg-owners.html">Create PG owners</a></li>
                         
@@ -1057,26 +1057,26 @@
                             <div class="row no-gutters">
                                 <div class="col-xl-12">
                                     <div class="auth-form">
-                                        <h4 class="text-center mb-4">Create Sub Admins</h4>
+                                        <h4 class="text-center mb-4">Create Sales Executives</h4>
                                         <form action="https://makaanlelo.com/tfdl_products_007/travl/xhtml/index.html">
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>Name</strong></label>
-                                                <input type="text" class="form-control" placeholder="Name">
+                                                <input type="text" class="form-control" placeholder="Name" id="new-sales-executive-name">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>Email</strong></label>
-                                                <input type="email" class="form-control" placeholder="hello@example.com">
+                                                <input type="email" class="form-control" placeholder="hello@example.com" id="new-sales-executive-email">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>Phone Number</strong></label>
-                                                <input type="phone" class="form-control" placeholder="Phone Number">
+                                                <input type="phone" class="form-control" placeholder="Phone Number" id="new-sales-executive-phone">
                                             </div>
                                             <div class="mb-3">
                                                 <label class="mb-1"><strong>Password</strong></label>
-                                                <input type="password" class="form-control" value="Password">
+                                                <input type="password" class="form-control" placeholder="Password" id="new-sales-executive-password">
                                             </div>
                                             <div class="text-center mt-4">
-                                                <button type="submit" class="btn btn-primary btn-block">Create User</button>
+                                                <button type="submit" class="btn btn-primary btn-block" id="create-new-sales-executive-button">Create User</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1105,625 +1105,22 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Sub Admins Datatable</h4>
+                                <h4 class="card-title">Sales Executive Datatable</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example3" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
-                                                <th></th>
                                                 <th>Name</th>
-                                                <th>Department</th>
-                                                <th>Gender</th>
-                                                <th>Education</th>
-                                                <th>Mobile</th>
                                                 <th>Email</th>
-                                                <th>Joining Date</th>
-                                                <th>Action</th>
+                                                <th>Phone</th>
+                                                <th>Profile Image</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Tiger Nixon</td>
-                                                <td>Architect</td>
-                                                <td>Male</td>
-                                                <td>M.COM., P.H.D.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/04/25</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Female</td>
-                                                <td>M.COM., P.H.D.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/07/25</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2009/01/12</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Cedric Kelly</td>
-                                                <td>Developer</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/03/29</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2008/11/28</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Brielle Williamson</td>
-                                                <td>Specialist</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/12/02</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Herrod Chandler</td>
-                                                <td>Sales Assistant</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/08/06</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Rhona Davidson</td>
-                                                <td>Integration</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/10/14</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Colleen Hurst</td>
-                                                <td>Javascript Developer</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2009/09/15</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Sonya Frost</td>
-                                                <td>Software Engineer</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2008/12/13</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Jena Gaines</td>
-                                                <td>Office Manager</td>
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2008/12/19</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Quinn Flynn</td>
-                                                <td>Support Lead</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2013/03/03</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Charde Marshall</td>
-                                                <td>Regional Director</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2008/10/16</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Haley Kennedy</td>
-                                                <td>Senior Marketing</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/12/18</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Tatyana Fitzpatrick</td>
-                                                <td>Regional Director</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/03/17</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Michael Silva</td>
-                                                <td>Marketing Designer</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/11/27</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Paul Byrd</td>
-                                                <td>Financial Officer</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/06/09</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Gloria Little</td>
-                                                <td>Systems Administrator</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2009/04/10</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Bradley Greer</td>
-                                                <td>Software Engineer</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/10/13</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Dai Rios</td>
-                                                <td>Personnel Lead</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2012/09/26</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic1.jpg" alt=""></td>
-                                                <td>Jenette Caldwell</td>
-                                                <td>Development Lead</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/09/03</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic2.jpg" alt=""></td>
-                                                <td>Yuri Berry</td>
-                                                <td>Marketing Officer</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2009/06/25</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic3.jpg" alt=""></td>
-                                                <td>Caesar Vance</td>
-                                                <td>Pre-Sales Support</td>
-                                                <td>Male</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/12/12</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic4.jpg" alt=""></td>
-                                                <td>Doris Wilder</td>
-                                                <td>Sales Assistant</td>
-                                                <td>Female</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/09/20</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic5.jpg" alt=""></td>
-                                                <td>Angelica Ramos</td>
-                                                <td>Executive Officer</td>
-                                                <td>Male</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2009/10/09</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic6.jpg" alt=""></td>
-                                                <td>Gavin Joyce</td>
-                                                <td>Developer</td>
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/12/22</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic7.jpg" alt=""></td>
-                                                <td>Jennifer Chang</td>
-                                                <td>Regional Director</td>
-                                                <td>Male</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/11/14</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic8.jpg" alt=""></td>
-                                                <td>Brenden Wagner</td>
-                                                <td>Software Engineer</td>
-                                                <td>Female</td>
-                                                <td>B.TACH, M.TACH</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/06/07</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic9.jpg" alt=""></td>
-                                                <td>Fiona Green</td>
-                                                <td>Operating Officer</td>
-                                                <td>Male</td>
-                                                <td>B.A, B.C.A</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2010/03/11</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><img class="rounded-circle" width="35"
-                                                        src="images/profile/small/pic10.jpg" alt=""></td>
-                                                <td>Shou Itou</td>
-                                                <td>Regional Marketing</td>
-                                                <td>Female</td>
-                                                <td>B.COM., M.COM.</td>
-                                                <td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
-                                                <td><a href="javascript:void(0);"><strong>info@example.com</strong></a>
-                                                </td>
-                                                <td>2011/08/14</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                                class="fas fa-pencil-alt"></i></a>
-                                                        <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                                class="fa fa-trash"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tbody id="sales-exec-table-body">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -1786,6 +1183,8 @@
     <script src="./js/dlabnav-init.js"></script>
     <script src="./js/demo.js"></script>
     <script src="./js/styleSwitcher.js"></script>
+    <script src="./js/salesExecutiveApi.js"></script>
+
     <script src="./js/loginHandler.js"></script>
 </body>
 

@@ -1,7 +1,8 @@
-let pgOwners = [];
+let users = [];
 
 const userTable = document.getElementById("example3");
 const userTableBody = document.createElement("tbody");
+const userTableInfo = document.getElementById("example3_info");
 
 fetch("https://pg-app-backend.herokuapp.com/api/superadmin/users", {
   method: "GET",
@@ -12,19 +13,20 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/users", {
 })
   .then((response) => response.json())
   .then((json) => {
-    pgOwners = json;
-    for (let i = 0; i < pgOwners.length; i++) {
+    users = json;
+    userTableInfo.innerText = `Showing 0 to ${users.length} of ${users.length} entries`;
+    for (let i = 0; i < users.length; i++) {
       const row = document.createElement("tr");
 
-      for (const prop in pgOwners[i]) {
+      for (const prop in users[i]) {
         const cell = document.createElement("td");
         if (prop === "_id") continue;
         if (prop === "profileimage") {
           const cellImage = document.createElement("img");
-          cellImage.setAttribute("src", pgOwners[i]["profileimage"]);
+          cellImage.setAttribute("src", users[i]["profileimage"]);
           cell.appendChild(cellImage);
         } else {
-          const cellText = document.createTextNode(`${pgOwners[i][prop]}`);
+          const cellText = document.createTextNode(`${users[i][prop]}`);
           cell.appendChild(cellText);
         }
         row.appendChild(cell);

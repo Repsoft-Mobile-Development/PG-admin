@@ -1,8 +1,9 @@
-let pgOwners = [];
-const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
-const pgOwnersTableInfo = document.getElementById("example3_info");
+let salesExecs = [];
+const salesExecsTableBody = document.getElementById("sales-exec-table-body");
+const salesExecutiveTableInfo = document.getElementById("example3_info");
 
-fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
+
+fetch("https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutives", {
   method: "GET",
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -11,20 +12,21 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
 })
   .then((response) => response.json())
   .then((json) => {
-    pgOwners = json;
-    pgOwnersTableInfo.innerText = `Showing 0 to ${pgOwners.length} of ${pgOwners.length} entries`;
-    for (let i = 0; i < pgOwners.length; i++) {
+    salesExecs = json;
+    salesExecutiveTableInfo.innerText = `Showing 0 to ${salesExecs.length} of ${salesExecs.length} entries`;
+
+    for (let i = 0; i < salesExecs.length; i++) {
       const row = document.createElement("tr");
 
-      for (const prop in pgOwners[i]) {
+      for (const prop in salesExecs[i]) {
         const cell = document.createElement("td");
         if (prop === "_id") continue;
         if (prop === "profileimage") {
           const cellImage = document.createElement("img");
-          cellImage.setAttribute("src", pgOwners[i]["profileimage"]);
+          cellImage.setAttribute("src", salesExecs[i]["profileimage"]);
           cell.appendChild(cellImage);
         } else {
-          const cellText = document.createTextNode(`${pgOwners[i][prop]}`);
+          const cellText = document.createTextNode(`${salesExecs[i][prop]}`);
           cell.appendChild(cellText);
         }
         row.appendChild(cell);
@@ -59,33 +61,33 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
       cell.appendChild(actions);
 
       row.appendChild(cell);
-      pgOwnersTableBody.appendChild(row);
+      salesExecsTableBody.appendChild(row);
     }
   });
 
-const newPgOwnerNameInput = document.getElementById("new-pg-owner-name");
-const newPgOwnerEmailInput = document.getElementById("new-pg-owner-email");
-const newPgOwnerPhoneInput = document.getElementById("new-pg-owner-phone");
-const newPgOwnerPasswordInput = document.getElementById(
-  "new-pg-owner-password"
+const newSalesExecNameInput = document.getElementById("new-sales-executive-name");
+const newSalesExecEmailInput = document.getElementById("new-sales-executive-email");
+const newSalesExecPhoneInput = document.getElementById("new-sales-executive-phone");
+const newSalesExecPasswordInput = document.getElementById(
+  "new-sales-executive-password"
 );
-const createNewPgOwnerButton = document.getElementById(
-  "create-new-pg-owner-button"
+const createNewSalesExecButton = document.getElementById(
+  "create-new-sales-executive-button"
 );
 
-createNewPgOwnerButton.addEventListener("click", (e) => {
-  const newPgOwnerData = new FormData();
+createNewSalesExecButton.addEventListener("click", (e) => {
+  const newSalesExecData = new FormData();
 
-  newPgOwnerData.append("email", newPgOwnerEmailInput.value);
-  newPgOwnerData.append("password", newPgOwnerPasswordInput.value);
-  newPgOwnerData.append("name", newPgOwnerNameInput.value);
-  newPgOwnerData.append("phone", newPgOwnerPhoneInput.value);
-  newPgOwnerData.append("usertype", "pgowner");
+  newSalesExecData.append("email", newSalesExecEmailInput.value);
+  newSalesExecData.append("password", newSalesExecPasswordInput.value);
+  newSalesExecData.append("name", newSalesExecNameInput.value);
+  newSalesExecData.append("phone", newSalesExecPhoneInput.value);
+  newSalesExecData.append("usertype", "salesexecutive");
 
   e.preventDefault();
   fetch("https://pg-app-backend.herokuapp.com/api/signup", {
     method: "POST",
-    body: newPgOwnerData,
+    body: newSalesExecData,
     headers: {
       Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
     },
