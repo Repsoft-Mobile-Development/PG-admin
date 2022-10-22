@@ -48953,6 +48953,6 @@ html[dir="rtl"]
 
 /*# sourceMappingURL=style.css.map */
 
-.DZ-theme-btn.DZ-bt-support-now, .DZ-theme-btn.DZ-bt-buy-now {
+.DZ-theme-btn.DZ-bt-support-now, .DZ-theme-btn.DZ-bt-buy-now, .odd {
   display: none !important;
 }
