@@ -18,7 +18,8 @@ signInBtn.addEventListener("click", (e) => {
     .then((response) => response.json())
     .then((json) => {
         if(json.user) {
-            return window.location.href = "./index.html"
+            localStorage.setItem("user", JSON.stringify(json.user));
+            return window.location.href = "./index.html";
         }
         window.alert(json.error)
     });
