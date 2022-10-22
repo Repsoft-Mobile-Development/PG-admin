@@ -1,9 +1,8 @@
+console.log(JSON.parse(localStorage.getItem("user")).token);
 let pgOwners = [];
+const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
 
-const userTable = document.getElementById("example3");
-const userTableBody = document.createElement("tbody");
-
-fetch("https://pg-app-backend.herokuapp.com/api/superadmin/users", {
+fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
   method: "GET",
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -13,6 +12,7 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/users", {
   .then((response) => response.json())
   .then((json) => {
     pgOwners = json;
+    console.log(pgOwners);
     for (let i = 0; i < pgOwners.length; i++) {
       const row = document.createElement("tr");
 
@@ -59,7 +59,40 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/users", {
       cell.appendChild(actions);
 
       row.appendChild(cell);
-      userTableBody.appendChild(row);
+      pgOwnersTableBody.appendChild(row);
     }
-    userTable.appendChild(userTableBody);
   });
+
+const newPgOwnerNameInput = document.getElementById("new-pg-owner-name");
+const newPgOwnerEmailInput = document.getElementById("new-pg-owner-email");
+const newPgOwnerPhoneInput = document.getElementById("new-pg-owner-phone");
+const newPgOwnerPasswordInput = document.getElementById(
+  "new-pg-owner-password"
+);
+const createNewPgOwnerButton = document.getElementById(
+  "create-new-pg-owner-button"
+);
+
+createNewPgOwnerButton.addEventListener("click", (e) => {
+  const newPgOwnerData = new FormData();
+
+  newPgOwnerData.append("email", newPgOwnerEmailInput.value);
+  newPgOwnerData.append("password", newPgOwnerPasswordInput.value);
+  newPgOwnerData.append("name", newPgOwnerNameInput.value);
+  newPgOwnerData.append("phone", newPgOwnerPhoneInput.value);
+  newPgOwnerData.append("usertype", "pgowner");
+
+  e.preventDefault();
+  fetch("https://pg-app-backend.herokuapp.com/api/signup", {
+    method: "POST",
+    body: newPgOwnerData,
+    headers: {
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      if(json.error) return window.alert(json.error);
+      window.location.reload();
+    });
+});
