@@ -2,7 +2,7 @@ let pgOwners = [];
 const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
 const pgOwnersTableInfo = document.getElementById("example3_info");
 
-fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
+fetch("https://pg-app-backend.herokuapp.com/api/salesexecutive/pgowners", {
   method: "GET",
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -11,7 +11,9 @@ fetch("https://pg-app-backend.herokuapp.com/api/superadmin/pgowners", {
 })
   .then((response) => response.json())
   .then((json) => {
+    if (json.error) return window.alert(json.error);
     pgOwners = json.users;
+    console.log(pgOwners);
     pgOwnersTableInfo.innerText = `Showing 0 to ${pgOwners.length} of ${pgOwners.length} entries`;
     for (let i = 0; i < pgOwners.length; i++) {
       const row = document.createElement("tr");

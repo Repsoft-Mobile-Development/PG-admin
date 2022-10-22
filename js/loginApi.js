@@ -17,10 +17,13 @@ signInBtn.addEventListener("click", (e) => {
   })
     .then((response) => response.json())
     .then((json) => {
-        if(json.user) {
-            localStorage.setItem("user", JSON.stringify(json.user));
-            return window.location.href = "./index.html";
-        }
-        window.alert(json.error)
+      if (json.user) {
+        localStorage.setItem("user", JSON.stringify(json.user));
+        if (json.user.usertype === "superadmin")
+          return (window.location.href = "./index.html");
+        if (json.user.usertype === "salesexecutive")
+          return (window.location.href = "./sales-exec-index.html");
+      }
+      window.alert(json.error);
     });
 });
