@@ -8,6 +8,19 @@ const pgOwnersTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[4];
 let deleteButtons;
+const sidebarButtonToggle = document.getElementById("sidebar-toggle");
+
+sidebarButtonToggle.addEventListener("click", () => {
+  const sidebar = document.querySelector("[data-sidebar-style='overlay'] .dlabnav");
+  if(!sidebar.style.left || sidebar.style.left === "-100%") sidebar.style.left = 0;
+  else sidebar.style.left = "-100%";
+});
+
+console.log(sidebarButtonToggle);
+
+sidebarButtonToggle.addEventListener("click", () => {
+  console.log("first")
+})
 
 const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   fetch(

@@ -12406,6 +12406,11 @@ label {
   font-size: 2.375rem;
   color: #000;
 }
+
+.brand-title {
+  display: none;
+}
+
 [data-theme-version="dark"] .nav-header .brand-title {
   background-position: 0 120%;
 }
@@ -12429,7 +12434,7 @@ label {
     width: 5rem;
   }
   .nav-header .brand-title {
-    display: none;
+    display: block;
   }
 }
 .nav-control {
