@@ -7,6 +7,7 @@ const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
 const pgOwnersTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[4];
+let deleteButtons;
 
 const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
@@ -59,27 +60,16 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
 
         actions.setAttribute("class", "d-flex");
 
-        const editAction = document.createElement("a");
-        const editIcon = document.createElement("i");
         const deleteAction = document.createElement("a");
         const deleteIcon = document.createElement("i");
-
-        editAction.setAttribute("href", "#");
-        editAction.setAttribute(
-          "class",
-          "btn btn-primary shadow btn-xs sharp me-1"
-        );
-        editIcon.setAttribute("class", "fas fa-pencil-alt");
 
         deleteAction.setAttribute("href", "#");
         deleteAction.setAttribute(
           "class",
-          "btn btn-danger shadow btn-xs sharp"
+          "btn btn-danger shadow btn-xs sharp delete-button"
         );
+        deleteAction.setAttribute("data-id", pgOwners[i]._id);
         deleteIcon.setAttribute("class", "fas fa fa-trash");
-
-        editAction.appendChild(editIcon);
-        actions.appendChild(editAction);
 
         deleteAction.appendChild(deleteIcon);
         actions.appendChild(deleteAction);
@@ -88,6 +78,29 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
         row.appendChild(cell);
         pgOwnersTableBody.appendChild(row);
       }
+
+      deleteButtons = document.querySelectorAll(".delete-button");
+      deleteButtons.forEach((button) =>
+        button.addEventListener("click", () => {
+          const _id = button.getAttribute("data-id");
+          fetch(
+            `https://pg-app-backend.herokuapp.com/api/salesexecutive/pgowner/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("user")).token
+                }`,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if(data.error) return window.alert(data.error);
+              window.location.reload();
+            });
+        })
+      );
     });
 };
 

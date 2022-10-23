@@ -7,6 +7,7 @@ const salesExecsTableBody = document.getElementById("sales-exec-table-body");
 const salesExecutiveTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[4];
+let deleteButtons;
 
 const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
@@ -57,27 +58,16 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
 
         actions.setAttribute("class", "d-flex");
 
-        const editAction = document.createElement("a");
-        const editIcon = document.createElement("i");
         const deleteAction = document.createElement("a");
         const deleteIcon = document.createElement("i");
-
-        editAction.setAttribute("href", "#");
-        editAction.setAttribute(
-          "class",
-          "btn btn-primary shadow btn-xs sharp me-1"
-        );
-        editIcon.setAttribute("class", "fas fa-pencil-alt");
 
         deleteAction.setAttribute("href", "#");
         deleteAction.setAttribute(
           "class",
-          "btn btn-danger shadow btn-xs sharp"
+          "btn btn-danger shadow btn-xs sharp delete-button"
         );
+        deleteAction.setAttribute("data-id", salesExecs[i]._id);
         deleteIcon.setAttribute("class", "fas fa fa-trash");
-
-        editAction.appendChild(editIcon);
-        actions.appendChild(editAction);
 
         deleteAction.appendChild(deleteIcon);
         actions.appendChild(deleteAction);
@@ -86,6 +76,29 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
         row.appendChild(cell);
         salesExecsTableBody.appendChild(row);
       }
+
+      deleteButtons = document.querySelectorAll(".delete-button");
+      deleteButtons.forEach((button) =>
+        button.addEventListener("click", () => {
+          const _id = button.getAttribute("data-id");
+          fetch(
+            `https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutive/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("user")).token
+                }`,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if(data.error) return window.alert(data.error);
+              window.location.reload();
+            });
+        })
+      );
     });
 };
 

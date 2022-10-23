@@ -8,7 +8,9 @@ const userTableBody = document.createElement("tbody");
 const userTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelector("input");
+let deleteButtons;
 
+/* loading data from server start */
 const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
     `https://pg-app-backend.herokuapp.com/api/superadmin/users?pagesize=${pagesize}&page=${page}&search=${search}`,
@@ -64,10 +66,11 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         deleteAction.setAttribute("href", "#");
         deleteAction.setAttribute(
           "class",
-          "btn btn-danger shadow btn-xs sharp"
+          "btn btn-danger shadow btn-xs sharp delete-button"
         );
+        deleteAction.setAttribute("data-id", users[i]._id);
+        deleteAction.setAttribute("data-identity", "delete-button");
         deleteIcon.setAttribute("class", "fas fa fa-trash");
-        deleteIcon.setAttribute("id", "delete-button");
 
         actions.appendChild(deleteAction);
 
@@ -79,6 +82,30 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         userTableBody.appendChild(row);
       }
       userTable.appendChild(userTableBody);
+
+      deleteButtons = document.querySelectorAll(".delete-button");
+      deleteButtons.forEach((button) =>
+        button.addEventListener("click", () => {
+          const _id = button.getAttribute("data-id");
+          fetch(
+            `https://pg-app-backend.herokuapp.com/api/superadmin/user/${_id}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("user")).token
+                }`,
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if(data.error) return window.alert(data.error);
+              window.location.reload();
+            });
+        })
+      );
+
     });
 };
 
@@ -120,3 +147,5 @@ searchBar.addEventListener("blur", () => {
 
 getUsers();
 loadPaginationEventListeners();
+loadDeleteButtonEventListeners();
+/* loading data from server end */
