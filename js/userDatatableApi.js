@@ -7,10 +7,11 @@ const userTable = document.getElementById("example3");
 const userTableBody = document.createElement("tbody");
 const userTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
+const searchBar = document.querySelector("input");
 
-const getUsers = (pagesize = 10, page = 1) => {
+const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://pg-app-backend.herokuapp.com/api/superadmin/users?pagesize=${pagesize}&page=${page}`,
+    `https://pg-app-backend.herokuapp.com/api/superadmin/users?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -24,7 +25,7 @@ const getUsers = (pagesize = 10, page = 1) => {
     .then((response) => response.json())
     .then((json) => {
       if (json.error) return window.alert(json.error);
-      
+
       users = json.users;
       currentPage = json.currentpage;
       totalPages = json.totalpages;
@@ -57,17 +58,8 @@ const getUsers = (pagesize = 10, page = 1) => {
 
         actions.setAttribute("class", "d-flex");
 
-        const editAction = document.createElement("a");
-        const editIcon = document.createElement("i");
         const deleteAction = document.createElement("a");
         const deleteIcon = document.createElement("i");
-
-        editAction.setAttribute("href", "#");
-        editAction.setAttribute(
-          "class",
-          "btn btn-primary shadow btn-xs sharp me-1"
-        );
-        editIcon.setAttribute("class", "fas fa-pencil-alt");
 
         deleteAction.setAttribute("href", "#");
         deleteAction.setAttribute(
@@ -75,9 +67,9 @@ const getUsers = (pagesize = 10, page = 1) => {
           "btn btn-danger shadow btn-xs sharp"
         );
         deleteIcon.setAttribute("class", "fas fa fa-trash");
+        deleteIcon.setAttribute("id", "delete-button");
 
-        editAction.appendChild(editIcon);
-        actions.appendChild(editAction);
+        actions.appendChild(deleteAction);
 
         deleteAction.appendChild(deleteIcon);
         actions.appendChild(deleteAction);
@@ -117,6 +109,12 @@ pageSizeSelector.addEventListener("change", () => {
   totalPages = 1;
   currentPage = 10;
   getUsers(pageSize);
+  loadPaginationEventListeners();
+});
+
+searchBar.addEventListener("blur", () => {
+  userTableBody.innerHTML = "";
+  getUsers(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
 });
 

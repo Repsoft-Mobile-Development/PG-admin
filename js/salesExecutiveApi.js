@@ -6,10 +6,11 @@ let totalPages;
 const salesExecsTableBody = document.getElementById("sales-exec-table-body");
 const salesExecutiveTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
+const searchBar = document.querySelectorAll("input")[4];
 
-const getSalesExecs = (pagesize = 10, page = 1) => {
+const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutives?pagesize=${pagesize}&page=${page}`,
+    `https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutives?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -115,6 +116,12 @@ pageSizeSelector.addEventListener("change", () => {
   totalPages = 1;
   currentPage = 10;
   getSalesExecs(pageSize);
+  loadPaginationEventListeners();
+});
+
+searchBar.addEventListener("blur", () => {
+  salesExecsTableBody.innerHTML = "";
+  getSalesExecs(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
 });
 
