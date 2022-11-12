@@ -11,19 +11,27 @@ let deleteButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
 
 sidebarButtonToggle.addEventListener("click", () => {
-  const sidebar = document.querySelector("[data-sidebar-style='overlay'] .dlabnav");
-  if(!sidebar.style.left || sidebar.style.left === "-100%") sidebar.style.left = 0;
+  const sidebar = document.querySelector(
+    "[data-sidebar-style='overlay'] .dlabnav"
+  );
+  if (!sidebar.style.left || sidebar.style.left === "-100%")
+    sidebar.style.left = 0;
   else sidebar.style.left = "-100%";
 });
 
 const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
-  fetch(`https://pg-app-backend.herokuapp.com/api/superadmin/pgowners?pagesize=${pagesize}&page=${page}&search=${search}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("user")).token}`,
-    },
-  })
+  fetch(
+    `https://pg-app-backend.herokuapp.com/api/superadmin/pgowners?pagesize=${pagesize}&page=${page}&search=${search}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("user")).token
+        }`,
+      },
+    }
+  )
     .then((response) => response.json())
     .then((json) => {
       if (json.error) return window.alert(json.error);
@@ -35,7 +43,9 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
       pgOwnersTableInfo.innerText = `Showing ${
         (json.currentpage - 1) * pagesize + 1
       } to ${
-        pagesize < pagesize * page + pgOwners.length ? pagesize * page : pagesize
+        pagesize < pagesize * page + pgOwners.length
+          ? pagesize * page
+          : pagesize
       } of ${json.totalpages * pagesize} entries`;
 
       for (let i = 0; i < pgOwners.length; i++) {
@@ -83,22 +93,24 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
       deleteButtons.forEach((button) =>
         button.addEventListener("click", () => {
           const _id = button.getAttribute("data-id");
-          fetch(
-            `https://pg-app-backend.herokuapp.com/api/superadmin/pgowner/${_id}`,
-            {
-              method: "DELETE",
-              headers: {
-                Authorization: `Bearer ${
-                  JSON.parse(localStorage.getItem("user")).token
-                }`,
-              },
-            }
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              if(data.error) return window.alert(data.error);
-              window.location.reload();
-            });
+          if (window.confirm("Are you sure?")) {
+            fetch(
+              `https://pg-app-backend.herokuapp.com/api/superadmin/pgowner/${_id}`,
+              {
+                method: "DELETE",
+                headers: {
+                  Authorization: `Bearer ${
+                    JSON.parse(localStorage.getItem("user")).token
+                  }`,
+                },
+              }
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.error) return window.alert(data.error);
+                window.location.reload();
+              });
+          }
         })
       );
     });
