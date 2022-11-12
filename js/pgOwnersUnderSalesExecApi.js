@@ -157,6 +157,7 @@ getPgOwners();
 loadPaginationEventListeners();
 
 const newPgOwnerNameInput = document.getElementById("new-pg-owner-name");
+const newPgOwnerPgNameInput = document.getElementById("new-pg-owner-pg-name");
 const newPgOwnerEmailInput = document.getElementById("new-pg-owner-email");
 const newPgOwnerPhoneInput = document.getElementById("new-pg-owner-phone");
 const newPgOwnerPasswordInput = document.getElementById(
@@ -174,6 +175,7 @@ createNewPgOwnerButton.addEventListener("click", (e) => {
   newPgOwnerData.append("name", newPgOwnerNameInput.value);
   newPgOwnerData.append("phone", newPgOwnerPhoneInput.value);
   newPgOwnerData.append("usertype", "pgowner");
+  newPgOwnerData.append("pgname", newPgOwnerPgNameInput.value);
 
   e.preventDefault();
   fetch("https://pg-app-backend.herokuapp.com/api/signup", {
