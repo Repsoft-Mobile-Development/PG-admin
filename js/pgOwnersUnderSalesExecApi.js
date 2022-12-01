@@ -27,7 +27,7 @@ sidebarButtonToggle.addEventListener("click", () => {
 
 const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://pg-app-backend.herokuapp.com/api/salesexecutive/pgowners?pagesize=${pagesize}&page=${page}&search=${search}`,
+    `https://backend.pgconnect.in/api/salesexecutive/pgowners?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -101,7 +101,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
           const _id = button.getAttribute("data-id");
           if (window.confirm("Are you sure?")) {
             fetch(
-              `https://pg-app-backend.herokuapp.com/api/salesexecutive/pgowner/${_id}`,
+              `https://backend.pgconnect.in/api/salesexecutive/pgowner/${_id}`,
               {
                 method: "DELETE",
                 headers: {
@@ -183,7 +183,7 @@ createNewPgOwnerButton.addEventListener("click", (e) => {
   newPgOwnerData.append("pgname", newPgOwnerPgNameInput.value);
 
   e.preventDefault();
-  fetch("https://pg-app-backend.herokuapp.com/api/signup", {
+  fetch("https://backend.pgconnect.in/api/signup", {
     method: "POST",
     body: newPgOwnerData,
     headers: {

@@ -5,7 +5,7 @@ const signInBtn = document.getElementById("sign-in-button");
 signInBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  fetch("https://pg-app-backend.herokuapp.com/api/login/admin", {
+  fetch("https://backend.pgconnect.in/api/login/admin", {
     method: "POST",
     body: JSON.stringify({
       email: emailInput.value,

@@ -23,7 +23,7 @@ sidebarButtonToggle.addEventListener("click", () => {
 /* loading data from server start */
 const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://pg-app-backend.herokuapp.com/api/superadmin/users?pagesize=${pagesize}&page=${page}&search=${search}`,
+    `https://backend.pgconnect.in/api/superadmin/users?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -98,17 +98,14 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         button.addEventListener("click", () => {
           const _id = button.getAttribute("data-id");
           if (window.confirm("Are you sure?")) {
-            fetch(
-              `https://pg-app-backend.herokuapp.com/api/superadmin/user/${_id}`,
-              {
-                method: "DELETE",
-                headers: {
-                  Authorization: `Bearer ${
-                    JSON.parse(localStorage.getItem("user")).token
-                  }`,
-                },
-              }
-            )
+            fetch(`https://backend.pgconnect.in/api/superadmin/user/${_id}`, {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("user")).token
+                }`,
+              },
+            })
               .then((res) => res.json())
               .then((data) => {
                 if (data.error) return window.alert(data.error);

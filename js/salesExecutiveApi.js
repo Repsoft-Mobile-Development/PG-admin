@@ -21,7 +21,7 @@ sidebarButtonToggle.addEventListener("click", () => {
 
 const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutives?pagesize=${pagesize}&page=${page}&search=${search}`,
+    `https://backend.pgconnect.in/api/superadmin/salesexecutives?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -95,7 +95,7 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
           const _id = button.getAttribute("data-id");
           if (window.confirm("Are you sure?")) {
             fetch(
-              `https://pg-app-backend.herokuapp.com/api/superadmin/salesexecutive/${_id}`,
+              `https://backend.pgconnect.in/api/superadmin/salesexecutive/${_id}`,
               {
                 method: "DELETE",
                 headers: {
@@ -182,7 +182,7 @@ createNewSalesExecButton.addEventListener("click", (e) => {
   newSalesExecData.append("usertype", "salesexecutive");
 
   e.preventDefault();
-  fetch("https://pg-app-backend.herokuapp.com/api/signup", {
+  fetch("https://backend.pgconnect.in/api/signup", {
     method: "POST",
     body: newSalesExecData,
     headers: {
