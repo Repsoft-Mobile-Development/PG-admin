@@ -97,8 +97,8 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         button.addEventListener("click", () => {
           const _id = button.getAttribute("data-id");
           if (window.confirm("Are you sure?")) {
-            fetch(`https://backend.pgconnect.in/api/superadmin/user/${_id}`, {
-              method: "DELETE",
+            fetch(`https://backend.pgconnect.in/api/superadmin/approvepgowner/${_id}`, {
+              method: "PUT",
               headers: {
                 Authorization: `Bearer ${
                   JSON.parse(localStorage.getItem("user")).token
