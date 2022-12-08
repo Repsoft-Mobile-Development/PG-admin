@@ -42,6 +42,8 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
     .then((json) => {
       if (json.error) return window.alert(json.error);
 
+      console.log(json.users[0])
+
       pgOwners = json.users;
       currentPage = json.currentpage;
       totalPages = json.totalpages;
@@ -59,7 +61,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
 
         for (const prop in pgOwners[i]) {
           const cell = document.createElement("td");
-          if (prop === "_id") continue;
+          if (prop === "profileid") continue;
           if (prop === "profileimage") {
             const cellImage = document.createElement("img");
             cellImage.setAttribute("src", pgOwners[i]["profileimage"]);
