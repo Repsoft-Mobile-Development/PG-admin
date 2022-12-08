@@ -56,6 +56,9 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
           if (prop === "profileimage") {
             const cellImage = document.createElement("img");
             cellImage.setAttribute("src", users[i]["profileimage"]);
+            cellImage.style.width = "2rem";
+            cellImage.style.aspectRatio = 1;
+            cellImage.style.borderRadius = "50%";
             cell.appendChild(cellImage);
           } else {
             const cellText = document.createTextNode(`${users[i][prop]}`);
