@@ -53,7 +53,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
 
         for (const prop in pgOwners[i]) {
           const cell = document.createElement("td");
-          if (prop === "_id") continue;
+          if (prop === "profileid") continue;
           if (prop === "profileimage") {
             const cellImage = document.createElement("img");
             cellImage.setAttribute("src", pgOwners[i]["profileimage"]);
