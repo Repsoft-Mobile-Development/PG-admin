@@ -6,7 +6,7 @@ let totalPages;
 const salesExecsTableBody = document.getElementById("sales-exec-table-body");
 const salesExecutiveTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
-const searchBar = document.querySelectorAll("input")[4];
+const searchBar = document.querySelectorAll("input")[5];
 let deleteButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
 
@@ -43,7 +43,7 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
       salesExecutiveTableInfo.innerText = `Showing ${
         (json.currentpage - 1) * pagesize + 1
       } to ${
-        pagesize < pagesize * page + salesExecs.length
+        pagesize < pagesize * page + salesExecs?.length
           ? pagesize * page
           : pagesize
       } of ${json.totalpages * pagesize} entries`;
@@ -174,6 +174,9 @@ const newSalesExecEmailInput = document.getElementById(
 const newSalesExecPhoneInput = document.getElementById(
   "new-sales-executive-phone"
 );
+const newSalesExecLocationInput = document.getElementById(
+  "new-sales-executive-location"
+);
 const newSalesExecPasswordInput = document.getElementById(
   "new-sales-executive-password"
 );
@@ -188,6 +191,7 @@ createNewSalesExecButton.addEventListener("click", (e) => {
   newSalesExecData.append("password", newSalesExecPasswordInput.value);
   newSalesExecData.append("name", newSalesExecNameInput.value);
   newSalesExecData.append("phone", newSalesExecPhoneInput.value);
+  newSalesExecData.append("location", newSalesExecLocationInput.value);
   newSalesExecData.append("usertype", "salesexecutive");
 
   e.preventDefault();
