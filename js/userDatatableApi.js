@@ -36,7 +36,7 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      if (json.error) return window.alert(json.error);
+      //if (json.error) return window.alert(json.error);
 
       users = json.users;
       currentPage = json.currentpage;
@@ -150,11 +150,16 @@ pageSizeSelector.addEventListener("change", () => {
   loadPaginationEventListeners();
 });
 
-searchBar.addEventListener("blur", () => {
+const handleSearch = () => {
   userTableBody.innerHTML = "";
   getUsers(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
-});
+};
+
+searchBar.addEventListener("blur", () => handleSearch());
+searchBar.addEventListener("keypress", (e) =>
+  e.key === "Enter" ? handleSearch() : null
+);
 
 getUsers();
 loadPaginationEventListeners();

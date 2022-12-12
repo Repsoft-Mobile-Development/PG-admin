@@ -8,6 +8,7 @@ const userTableBody = document.createElement("tbody");
 const userTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelector("input");
+
 let deleteButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
 
@@ -23,7 +24,7 @@ sidebarButtonToggle.addEventListener("click", () => {
 /* loading data from server start */
 const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   fetch(
-    `https://backend.pgconnect.in/api/superadmin/appliedpgowners?pagesize=${pagesize}&page=${page}`,
+    `https://backend.pgconnect.in/api/superadmin/appliedpgowners?pagesize=${pagesize}&page=${page}&search=${search}`,
     {
       method: "GET",
       headers: {
@@ -36,7 +37,6 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       users = json.pgowners;
       currentPage = json.currentpage;
       totalPages = json.totalpages;
@@ -100,14 +100,17 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         button.addEventListener("click", () => {
           const _id = button.getAttribute("data-id");
           if (window.confirm("Are you sure?")) {
-            fetch(`https://backend.pgconnect.in/api/superadmin/approvepgowner/${_id}`, {
-              method: "PUT",
-              headers: {
-                Authorization: `Bearer ${
-                  JSON.parse(localStorage.getItem("user")).token
-                }`,
-              },
-            })
+            fetch(
+              `https://backend.pgconnect.in/api/superadmin/approvepgowner/${_id}`,
+              {
+                method: "PUT",
+                headers: {
+                  Authorization: `Bearer ${
+                    JSON.parse(localStorage.getItem("user")).token
+                  }`,
+                },
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 if (data.error) return window.alert(data.error);
@@ -150,11 +153,16 @@ pageSizeSelector.addEventListener("change", () => {
   loadPaginationEventListeners();
 });
 
-searchBar.addEventListener("blur", () => {
+const handleSearch = () => {
   userTableBody.innerHTML = "";
   getUsers(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
-});
+};
+
+searchBar.addEventListener("blur", () => handleSearch());
+searchBar.addEventListener("keypress", (e) =>
+  e.key === "Enter" ? handleSearch() : null
+);
 
 getUsers();
 loadPaginationEventListeners();

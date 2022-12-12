@@ -34,7 +34,7 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      if (json.error) return window.alert(json.error);
+      //if (json.error) return window.alert(json.error);
 
       salesExecs = json.users;
       currentPage = json.currentpage;
@@ -149,11 +149,16 @@ pageSizeSelector.addEventListener("change", () => {
   loadPaginationEventListeners();
 });
 
-searchBar.addEventListener("blur", () => {
+const handleSearch = () => {
   salesExecsTableBody.innerHTML = "";
   getSalesExecs(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
-});
+};
+
+searchBar.addEventListener("blur", () => handleSearch());
+searchBar.addEventListener("keypress", (e) =>
+  e.key === "Enter" ? handleSearch() : null
+);
 
 getSalesExecs();
 loadPaginationEventListeners();

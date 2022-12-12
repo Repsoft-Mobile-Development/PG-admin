@@ -6,7 +6,7 @@ let totalPages;
 const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
 const pgOwnersTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
-const searchBar = document.querySelectorAll("input")[4];
+const searchBar = document.querySelectorAll("input")[5];
 let deleteButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
 
@@ -34,7 +34,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      if (json.error) return window.alert(json.error);
+      //if (json.error) return window.alert(json.error);
 
       pgOwners = json.users;
       currentPage = json.currentpage;
@@ -149,11 +149,17 @@ pageSizeSelector.addEventListener("change", () => {
   loadPaginationEventListeners();
 });
 
-searchBar.addEventListener("blur", () => {
+const handleSearch = () => {
   pgOwnersTableBody.innerHTML = "";
+  console.log(searchBar.value);
   getPgOwners(pageSize, currentPage, searchBar.value);
   loadPaginationEventListeners();
-});
+};
+
+searchBar.addEventListener("blur", () => handleSearch());
+searchBar.addEventListener("keypress", (e) =>
+  e.key === "Enter" ? handleSearch() : null
+);
 
 getPgOwners();
 loadPaginationEventListeners();
