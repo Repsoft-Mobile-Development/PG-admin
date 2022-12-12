@@ -53,7 +53,8 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
 
         for (const prop in salesExecs[i]) {
           const cell = document.createElement("td");
-          if (prop === "_id") continue;
+          /* if (prop === "_id") continue; */
+
           if (prop === "profileimage") {
             const cellImage = document.createElement("img");
             cellImage.setAttribute("src", salesExecs[i]["profileimage"]);
