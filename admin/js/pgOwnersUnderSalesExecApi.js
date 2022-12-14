@@ -60,6 +60,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
         const row = document.createElement("tr");
 
         for (const prop in pgOwners[i]) {
+          if (prop === "_id") continue;
           const cell = document.createElement("td");
           if (prop === "profileid") continue;
           if (prop === "profileimage") {
