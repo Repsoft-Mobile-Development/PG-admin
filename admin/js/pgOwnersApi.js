@@ -7,8 +7,9 @@ const pgOwnersTableBody = document.getElementById("pg-owners-table-body");
 const pgOwnersTableInfo = document.getElementById("example3_info");
 const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[5];
-let deleteButtons;
+let deleteButtons, pgButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
+const addPgModal = document.getElementById("add-pg-modal");
 
 sidebarButtonToggle.addEventListener("click", () => {
   const sidebar = document.querySelector(
@@ -73,10 +74,13 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
         const cell = document.createElement("td");
         const actions = document.createElement("div");
 
-        actions.setAttribute("class", "d-flex");
+        actions.setAttribute("class", "d-flex gap-1");
 
         const deleteAction = document.createElement("a");
         const deleteIcon = document.createElement("i");
+
+        const plusAction = document.createElement("a");
+        const plusIcon = document.createElement("i");
 
         deleteAction.setAttribute("href", "#");
         deleteAction.setAttribute(
@@ -86,8 +90,18 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
         deleteAction.setAttribute("data-id", pgOwners[i]._id);
         deleteIcon.setAttribute("class", "fas fa fa-trash");
 
+        plusAction.setAttribute("href", "#");
+        plusAction.setAttribute(
+          "class",
+          "btn btn-primary shadow btn-xs sharp add-pg-button"
+        );
+        plusAction.setAttribute("data-id", pgOwners[i]._id);
+        plusIcon.setAttribute("class", "fas fa fa-plus");
+
         deleteAction.appendChild(deleteIcon);
+        plusAction.appendChild(plusIcon);
         actions.appendChild(deleteAction);
+        actions.appendChild(plusAction);
         cell.appendChild(actions);
 
         row.appendChild(cell);
@@ -118,6 +132,33 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
           }
         })
       );
+
+      pgButtons = document.querySelectorAll(".add-pg-button");
+      pgButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const id = button.getAttribute("data-id");
+          const newPgName = prompt("Enter new PG name:");
+          if (newPgName?.length) {
+            console.log(newPgName, id);
+            fetch("https://backend.pgconnect.in/api/superadmin/addnewpg", {
+              method: "POST",
+              body: JSON.stringify({
+                pgname: newPgName,
+                pgownerid: id,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                Authorization: `Bearer ${
+                  JSON.parse(localStorage.getItem("user")).token
+                }`,
+              },
+            })
+              .then((response) => response.json())
+              .then((json) => alert(json.message))
+              .catch((error) => console.log(error));
+          }
+        });
+      });
     });
 };
 
