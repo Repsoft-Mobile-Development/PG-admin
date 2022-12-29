@@ -9,6 +9,7 @@ const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[5];
 let deleteButtons, pgButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
+const showPasswordToggle = document.getElementById("show-pass-toggle");
 
 sidebarButtonToggle.addEventListener("click", () => {
   const sidebar = document.querySelector(
@@ -245,4 +246,8 @@ createNewPgOwnerButton.addEventListener("click", (e) => {
       if (json.error) return window.alert(json.error);
       window.location.reload();
     });
+});
+
+showPasswordToggle.addEventListener("click", () => {
+  newPgOwnerPasswordInput.type = newPgOwnerPasswordInput.type === "password" ? "text" : "password";
 });

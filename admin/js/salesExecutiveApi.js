@@ -9,6 +9,7 @@ const pageSizeSelector = document.querySelector("select");
 const searchBar = document.querySelectorAll("input")[5];
 let deleteButtons;
 const sidebarButtonToggle = document.getElementById("sidebar-toggle");
+const showPasswordToggle = document.getElementById("show-pass-toggle");
 
 sidebarButtonToggle.addEventListener("click", () => {
   const sidebar = document.querySelector(
@@ -210,4 +211,8 @@ createNewSalesExecButton.addEventListener("click", (e) => {
       if (json.error) return window.alert(json.error);
       window.location.reload();
     });
+});
+
+showPasswordToggle.addEventListener("click", () => {
+  newSalesExecPasswordInput.type = newSalesExecPasswordInput.type === "password" ? "text" : "password";
 });

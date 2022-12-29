@@ -92,10 +92,5 @@ passwordResetLink.addEventListener("click", (e) => {
 });
 
 showPasswordToggle.addEventListener("click", () => {
-  // passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-  } else {
-    passwordInput.type = "password";
-  }
+  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
 });
