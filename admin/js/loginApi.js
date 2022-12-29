@@ -8,6 +8,7 @@ const resetEmailInput = document.getElementById("reset-email-input");
 const resetOTPInput = document.getElementById("reset-otp-input");
 const resetPasswordInput = document.getElementById("reset-password-input");
 const resetPasswordButton = document.getElementById("reset-password-button");
+const showPasswordToggle = document.getElementById("show-pass-toggle");
 
 signInBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -88,4 +89,13 @@ passwordResetLink.addEventListener("click", (e) => {
           });
       });
     });
+});
+
+showPasswordToggle.addEventListener("click", () => {
+  // passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
 });
