@@ -65,6 +65,75 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
             cellImage.style.aspectRatio = 1;
             cellImage.style.borderRadius = "50%";
             cell.appendChild(cellImage);
+          } else if (prop === "pgdata") {
+            const pgData = pgOwners[i][prop];
+            console.log(pgData);
+            //const dropdown = document.createElement("select");
+            const pgOwnersDropdown = document.createElement("div");
+            pgOwnersDropdown.innerText = "PG Data";
+            pgOwnersDropdown.style.fontSize = "1rem";
+            pgOwnersDropdown.style.cursor = "pointer";
+            pgOwnersDropdown.addEventListener("click", () => {
+              contentTable.style.display =
+                contentTable.style.display === "none" ? "block" : "none";
+            });
+
+            const contentTable = document.createElement("table");
+            contentTable.style.display = "none";
+            contentTable.style.textAlign = "center";
+            contentTable.style.verticalAlign = "center";
+            contentTable.style.border = "1px solid black";
+            const contentTableHead = document.createElement("thead");
+            const contentTableHeadRow = document.createElement("tr");
+            const contentTableTitles = ["pgame", "pgddress", "Action"];
+
+            contentTableTitles.forEach((title) => {
+              const columnHead = document.createElement("th");
+              columnHead.innerText = title;
+              contentTableHeadRow.appendChild(columnHead);
+            });
+            contentTableHead.appendChild(contentTableHeadRow);
+            contentTable.appendChild(contentTableHead);
+
+            const contentTableBody = document.createElement("tbody");
+            contentTable.appendChild(contentTableBody);
+
+            cell.appendChild(pgOwnersDropdown);
+            pgData.forEach((data) => {
+              const contentTableBodyRow = document.createElement("tr");
+
+              const pgName = document.createElement("td");
+              const pgAddress = document.createElement("td");
+              const pgAction = document.createElement("td");
+              const deletePgIcon = document.createElement("i");
+
+              deletePgIcon.setAttribute("class", "fas fa fa-trash");
+              deletePgIcon.addEventListener("click", () => {
+                if (confirm("Are you sure?")) {
+                  fetch(
+                    `https://backend.pgconnect.in/api/superadmin/deletepg/${data._id}`,
+                    {
+                      method: "DELETE",
+                      headers: {
+                        Authorization: `Bearer ${
+                          JSON.parse(localStorage.getItem("user")).token
+                        }`,
+                      },
+                    }
+                  ).then(() => window.location.reload());
+                }
+              });
+
+              pgName.innerText = data.pgname;
+              pgAddress.innerText = data.pgaddress;
+              pgAction.appendChild(deletePgIcon);
+              contentTableBodyRow.appendChild(pgName);
+              contentTableBodyRow.appendChild(pgAddress);
+              contentTableBodyRow.appendChild(pgAction);
+
+              contentTableBody.appendChild(contentTableBodyRow);
+            });
+            pgOwnersDropdown.appendChild(contentTable);
           } else {
             const cellText = document.createTextNode(`${pgOwners[i][prop]}`);
             cell.appendChild(cellText);
@@ -248,5 +317,6 @@ createNewPgOwnerButton.addEventListener("click", (e) => {
 });
 
 showPasswordToggle.addEventListener("click", () => {
-  newPgOwnerPasswordInput.type = newPgOwnerPasswordInput.type === "password" ? "text" : "password";
+  newPgOwnerPasswordInput.type =
+    newPgOwnerPasswordInput.type === "password" ? "text" : "password";
 });
