@@ -80,12 +80,22 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
             pgOwnersDropdown.style.fontSize = "1rem";
             pgOwnersDropdown.style.cursor = "pointer";
             pgOwnersDropdown.style.position = "relative";
-            pgOwnersDropdown.addEventListener("click", () => {
+            pgOwnersDropdown.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const tables = document.querySelectorAll(
+                "[data-table-type='pg-data-table']"
+              );
+              tables.forEach((table) => (table.style.display = "none"));
               contentTable.style.display =
                 contentTable.style.display === "none" ? "block" : "none";
             });
+            document.addEventListener("click", () => {
+              contentTable.style.display = "none";
+            });
 
             const contentTable = document.createElement("table");
+            contentTable.addEventListener("click", (e) => e.stopPropagation());
+
             contentTable.style.display = "none";
             contentTable.style.textAlign = "center";
             contentTable.style.verticalAlign = "center";
@@ -130,7 +140,9 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
                         }`,
                       },
                     }
-                  ).then(() => window.location.reload()).catch(error => console.log(error));
+                  )
+                    .then(() => window.location.reload())
+                    .catch((error) => console.log(error));
                 }
               });
 

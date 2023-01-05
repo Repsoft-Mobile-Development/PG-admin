@@ -74,12 +74,20 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
             pgOwnersDropdown.style.fontSize = "1rem";
             pgOwnersDropdown.style.cursor = "pointer";
             pgOwnersDropdown.style.position = "relative";
-            pgOwnersDropdown.addEventListener("click", () => {
+            pgOwnersDropdown.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const tables = document.querySelectorAll(
+                "[data-table-type='pg-data-table']"
+              );
+              tables.forEach((table) => (table.style.display = "none"));
               contentTable.style.display =
                 contentTable.style.display === "none" ? "block" : "none";
             });
 
             const contentTable = document.createElement("table");
+            contentTable.setAttribute("data-table-type", "pg-data-table");
+            contentTable.addEventListener("click", (e) => e.stopPropagation());
+
             contentTable.style.display = "none";
             contentTable.style.textAlign = "center";
             contentTable.style.verticalAlign = "center";
@@ -144,6 +152,14 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
           }
           row.appendChild(cell);
         }
+
+        document.addEventListener("click", () => {
+          const tables = document.querySelectorAll(
+            "[data-table-type='pg-data-table']"
+          );
+          //console.log(tables);
+          tables.forEach((table) => (table.style.display = "none"));
+        });
 
         const cell = document.createElement("td");
         const actions = document.createElement("div");
