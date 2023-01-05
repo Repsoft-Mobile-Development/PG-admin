@@ -73,6 +73,7 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
             pgOwnersDropdown.innerText = "PG Data";
             pgOwnersDropdown.style.fontSize = "1rem";
             pgOwnersDropdown.style.cursor = "pointer";
+            pgOwnersDropdown.style.position = "relative";
             pgOwnersDropdown.addEventListener("click", () => {
               contentTable.style.display =
                 contentTable.style.display === "none" ? "block" : "none";
@@ -83,6 +84,9 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
             contentTable.style.textAlign = "center";
             contentTable.style.verticalAlign = "center";
             contentTable.style.border = "1px solid black";
+            contentTable.style.position = "absolute";
+            contentTable.style.backgroundColor = "white";
+            contentTable.style.zIndex = "100";
             const contentTableHead = document.createElement("thead");
             const contentTableHeadRow = document.createElement("tr");
             const contentTableTitles = ["pgame", "pgddress", "Action"];
