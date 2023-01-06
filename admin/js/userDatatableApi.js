@@ -54,6 +54,7 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
         for (const prop in users[i]) {
           const cell = document.createElement("td");
           if (prop === "_id") continue;
+          if (prop === "pgid") continue;
           if (prop === "profileimage") {
             const cellImage = document.createElement("img");
             cellImage.setAttribute("src", users[i]["profileimage"]);
