@@ -1,3 +1,8 @@
+const theads = document.querySelectorAll("th");
+theads.forEach((head) => {
+  
+});
+
 let pgOwners = [];
 let currentPage = 1;
 let pageSize = 10;
