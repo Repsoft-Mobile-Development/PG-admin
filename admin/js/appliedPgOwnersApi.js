@@ -37,6 +37,11 @@ const getUsers = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
+      if (json.error === "jwt expired") {
+        localStorage.removeItem("user");
+        return window.alert(json.error);
+      }
+
       users = json.pgowners;
       currentPage = json.currentpage;
       totalPages = json.totalpages;

@@ -36,7 +36,10 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      //if (json.error) return window.alert(json.error);
+      if (json.error === "jwt expired") {
+        localStorage.removeItem("user");
+        return window.alert(json.error);
+      }
 
       pgOwners = json.users;
       currentPage = json.currentpage;
@@ -327,8 +330,7 @@ createNewPgOwnerButton.addEventListener("click", (e) => {
     },
   })
     .then((response) => {
-      response.json();
-      window.location.reload();
+      return response.json();
     })
     .then((json) => {
       if (json.error) return window.alert(json.error);

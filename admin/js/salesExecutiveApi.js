@@ -35,7 +35,10 @@ const getSalesExecs = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      //if (json.error) return window.alert(json.error);
+      if (json.error === "jwt expired") {
+        localStorage.removeItem("user");
+        return window.alert(json.error);
+      }
 
       salesExecs = json.users;
       currentPage = json.currentpage;
@@ -185,6 +188,8 @@ const createNewSalesExecButton = document.getElementById(
   "create-new-sales-executive-button"
 );
 
+console.log(createNewSalesExecButton);
+
 createNewSalesExecButton.addEventListener("click", (e) => {
   const newSalesExecData = new FormData();
 
@@ -204,15 +209,15 @@ createNewSalesExecButton.addEventListener("click", (e) => {
     },
   })
     .then((response) => {
-      response.json();
-      window.location.reload();
+      return response.json();
     })
     .then((json) => {
-      if (json.error) return window.alert(json.error);
+      if (json?.error) return window.alert(json.error);
       window.location.reload();
     });
 });
 
 showPasswordToggle.addEventListener("click", () => {
-  newSalesExecPasswordInput.type = newSalesExecPasswordInput.type === "password" ? "text" : "password";
+  newSalesExecPasswordInput.type =
+    newSalesExecPasswordInput.type === "password" ? "text" : "password";
 });

@@ -1,7 +1,5 @@
 const theads = document.querySelectorAll("th");
-theads.forEach((head) => {
-  
-});
+theads.forEach((head) => {});
 
 let pgOwners = [];
 let currentPage = 1;
@@ -46,7 +44,10 @@ const getPgOwners = (pagesize = pageSize, page = 1, search = "") => {
   )
     .then((response) => response.json())
     .then((json) => {
-      // if (json.error) return window.alert(json.error);
+      if (json.error === "jwt expired") {
+        localStorage.removeItem("user");
+        return window.alert(json.error);
+      }
 
       console.log(json.users[0]);
 
